@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+      <!-- cpu -->
+      <bean id="I7" class="computer.I7cpu"></bean>
+      <bean id="I5" class="computer.I5cpu"></bean>
+      <!-- 内存 -->
+      <bean id="Smalldisk" class="computer.SmallDisk"></bean>
+      <bean id="Bigdisk" class="computer.BigDisk"></bean>
+      <!-- 硬盘 -->
+      <bean id="Smallmemory" class="computer.Smallmemory"></bean>
+      <bean id="bigmemory" class="computer.Bigmemory"></bean>
+      <!-- 组装一台电脑 -->
+      <bean id="computer" class="computer.Computer">
+           <property name="cp" ref="I7"></property>
+           <property name="dis" ref="Smalldisk"></property>
+           <property name="memor" ref="bigmemory"></property>
+      </bean>
+</beans>

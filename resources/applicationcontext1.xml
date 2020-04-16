@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!-- 配置组件
+                          墨盒：彩色跟黑白
+                          子张：a4跟a5
+         -->
+         <!-- 创建墨盒组件 -->
+         <!-- 彩色墨盒 -->
+         <bean id="colorInk" class="print.MulticolorInk">
+         
+         </bean>
+         <!-- 黑白墨盒 -->
+         <bean id="colorBlack" class="print.BlackcolorInk">
+         
+         </bean>
+         <!-- 创建子张组件 -->
+         <!-- A4 -->
+         <bean id="A4" class="print.A4Papaer">
+         
+         </bean>
+         <!-- A5 -->
+         <bean id="A5" class="print.A5paper">
+         
+         </bean>
+         <!-- 组装打印机 -->
+         <!-- 组装一台彩色打印机使用a4 -->
+         <bean id="colorPrint" class="print.Printer">
+            <!-- 为墨盒赋值  -->
+            <!-- 引用定义好的bean组件 -->
+            <property name="ink" ref="colorInk"></property>
+            <!-- 为子张赋值 -->
+            <property name="pager" ref="A4"></property>
+         </bean>
+</beans>
