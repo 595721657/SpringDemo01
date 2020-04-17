@@ -19,7 +19,18 @@ public class SpringTest {
 	public void setName(String name) {
 		this.name = name;
 	}
-      //显示name的值
+	
+      public SpringTest() {
+		super();
+	}
+
+	public SpringTest(String name, String content) {
+		super();
+		this.name = name;
+		this.content = content;
+	}
+
+	//显示name的值
 	public void print() {
 		System.out.println(name+"说："+content);
 	}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+       <!-- 为testentity的参数赋值 -->
+        <bean id="entity" class="day2.pojo.TestEntity">
+          <!-- 1).为特殊符号赋值 -->
+           <!--第一种 使用cdata特殊符号注入 -->
+           <property name="specialCharacter1">
+            <value><![CDATA[P&G]]></value>
+           </property>
+           <!-- 2).第二种 使用英文代替符号-->   
+           <property name="specialCharacter2">
+            <value>P&amp;G</value>
+           </property> 
+          <!-- 3).引用其它的实体类 -->  
+          <property name="innerBean">
+              <!-- 1.直接配置一个bean节点 -->
+              <!-- <bean class="day2.pojo.User" p:name="张三" p:age="20" p:address="四川乐山"/> -->
+              <!-- 2.引用一个定义好的bean -->
+              <ref bean="new_user"/>
+              <!-- 3.引用一个定义好的bean -->
+              <!-- <ref local="new_user"/>  -->
+              <!-- 
+                    local:只能在当前的这个配置文件中进行查询
+                    bean:可以到其它的配置文件中进行查找.
+               -->
+          </property>  
+          <!-- 4).给list配置 -->   
+          <property name="list">
+             <list>
+                <!-- 为list添加数据 -->
+                <value>苹果</value>
+                <value>芒果</value>
+                <value>橘子</value>
+             </list>
+          </property>
+          <!--  5).为数组配置 -->
+          <property name="array">
+              <array>
+                <!-- 为array添加数据 -->
+                <value>农村</value>
+                <value>城镇</value>
+              </array>
+          </property>
+          <!-- 6).为set集合配置 -->
+          <property name="set">
+             <set>
+               <!-- 为set添加数据 -->
+               <value>001</value>
+               <value>002</value>
+             </set>
+          </property>
+          <!-- 7).为map集合配置 -->
+          <property name="map">
+             <map>
+                <!-- 为set添加数据 -->
+                <!-- 
+                      entry:表示一条数据
+                      key:就是map集合中的键值
+                      value:就是key对于的值
+                 -->
+               <entry>
+                   <key><value>Teacher</value></key>
+                   <value>老师</value>
+               </entry>
+               <entry>
+                   <key><value>Student</value></key>
+                   <value>学生</value>
+               </entry>
+             </map>
+          </property>
+          <!-- 8).为Properties类型配置 
+                              配置数据源的文件
+               key=value
+          -->
+          <property name="props">
+             <!-- props 表示可以注入多个key=value形式的数据 -->
+             <props>
+               <!--prop  表示具体的一个key=value的数据  -->
+               <prop key="driver">com.mysql.jdbc.Driver</prop>
+               <prop key="url">jdbc:mysql://localhost:3306/test</prop>
+             </props>
+          </property>
+          <!--  9).注入空值或空字符串 -->
+            <!-- 注入空字符串 -->
+            <property name="emptyValue">
+              <value></value>
+            </property>
+            <!-- 注入空值 -->
+            <property name="nullValue">
+              <null/>
+            </property>
+        </bean> 
+        <bean class="day2.pojo.User" id="new_user" p:name="张三" p:age="20" p:address="四川乐山"/>  
+</beans>

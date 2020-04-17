@@ -24,4 +24,12 @@
     <property name="name" value="李四"></property>
     <property name="content" value="今天上课了嘛"></property>
    </bean>
+   <bean id="testExample01" class="SpringTest">
+     <constructor-arg name="name" value="张三"/>
+     <constructor-arg name="content" value="今天天气真好"/>
+   </bean>
+      <bean id="testExample02" class="SpringTest">
+     <constructor-arg name="name" value="李四"/>
+     <constructor-arg name="content" value="今天上课了嘛"/>
+   </bean>
 </beans>
